@@ -1,0 +1,796 @@
+<html>
+<head>
+	<title>Optik kuchaytirgich parametrlarini tahlil qilish dasturi</title>
+	<link rel='stylesheet' type='text/css' href='main.css' />
+	<script src='jquery.js' ></script>
+	<script src='script.js' ></script>
+</head>
+<body>
+	<div id='main_window'>
+		<div id='menu'>
+			<ul class='nav'>
+				<li class='first-item current' id='to-first-page'><a href='dastur.html'>Ishga tushirish</a></li>
+				<li id='to-second-page'><a href='#'>Hisoblashlar</a></li>
+				<!--li id='to-third-page'><a href='#'>Prametrlar</a></li-->
+				<li class='last-item' id='to-last-page'><a href='#'>Topshiriq</a></li>
+			</ul>
+		</div>
+		<div id='content'>
+			<fieldset>
+				<div id='first-page'>
+					<p>O'zbekiston Respublikasi Axborot texnologiyalari va kommunikatsiyalarni rivojlantirish Vazirligi</p>
+					<p>TOSHKENT AXBOROT TEXNOLOGIYALARI UNIVERSITETI</p>
+					<p>Kafedra: Telekommunikatsiya Injiniring</p>
+					<p>Optik kuchaytrigichlarning xarakteristikasi va<br> parametrlarini hisoblash dasturi</p>
+					<p class='bottom'>Toshkent</p>
+				</div>
+				<div id='second-page'>
+					<table class='calculation' border=0 width='99%' height='99%'>
+						<tr>
+							<td  width='70%' valign='top'>
+								<div class='graph' width='400px' height='400px' id='graph'></div>
+								<div class="xcord"></div><div class="ycord"></div>
+							</td>
+							<td class='configs' width='25%' valign='top'>
+								<p><span>Kirish quvvati</span><br>
+									<input type='radio' name='pin' value='-30' id='pin1'>
+									<label for='pin1'>P<sub>kir</sub>=-30 dBq</label>
+								<br>
+									<input type='radio' name='pin' value='-20' id='pin2'>
+									<label for='pin2'>P<sub>kir</sub>=-20 dBq</label>
+								<br>
+									<input type='radio' name='pin' value='-10' id='pin3'>
+									<label for='pin3'>P<sub>kir</sub>=-10 dBq</label>
+								<br>
+									<input type='radio' name='pin' value='0' id='pin4'>
+									<label for='pin4'>P<sub>kir</sub>=0 dBq</label>
+								<br>
+									<input type='radio' name='pin' value='10' id='pin5'>
+									<label for='pin5'>P<sub>kir</sub>=10 dBq</label>
+								</p>
+								<p><span>To'lqin uzunligi</span><br/>
+								<select id='lambda'>
+									<option value='0'>-tanlash-</option>
+									<option value='1530'>1530</option>
+									<option value='1540'>1540</option>
+									<option value='1550'>1550</option>
+									<option value='1560'>1560</option>
+								</select>
+								</p>
+								<center><button value='' id='draw'>grafik chizish</button><button value='' id='draw2'>AX</button></center>
+								<p><span>Chastota spektri:</span></p>
+								<p id='chastota'></p>
+								<p><span>Kuchaytirish koeffitsiyenti:</span></p>
+								<p class='gresult'></br>
+									<span class='gresult_in'></span>
+								</p><br><br><br>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!--div id='third-page' style='display:none;'>
+					<ul class='nav'>
+						<li id='to-second-page'><a href='#'>Kuchaytirish koeffisiyentini aniqlash</a></li>
+						<li id='to-innoise-page'><a href='#'>Kirishdagi shovqin quvvatini aniqlash</a></li>
+						<li id='to-outnoise-page'><a href='#'>Chiqishdagi shovqin quvvatini aniqlash</a></li>
+						<li id='to-noise-factor-page'><a href='#'>Shovqin faktor NF ni aniqlash</a></li>
+					</ul>
+				</div-->
+				<div id='last-page' style='display:none;height:400px;overflow-y:scroll;'>
+					<ol><p>Berilgan to'lqin uzunliklari hamda dastur yordamida hisoblangan kuchaytirish koeffisiyenti yordamida chiqish quvvati hisoblansin va (1,2,3,4) jadvallar to'ldirilsin.</p>
+					<p>Dastur yordamida chastota spektri aniqlansin, aniqlangan qiymatlar yordamida 5 - jadval to'ldirilsin.</p>
+						<li>
+						<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=552
+							 style='width:413.9pt;margin-left:36.5pt;border-collapse:collapse;border:none'>
+							 <tr style='height:14.25pt'>
+							  <td width=552 colspan=6 valign=top style='width:413.9pt;border:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:14.25pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&#955;</span><span
+							  lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman","serif";
+							  color:black'>=</span><span lang=UZ-CYR style='font-size:14.0pt;font-family:
+							  "Times New Roman","serif";color:black'>1530</span></p>
+							  </td>
+							 </tr>
+							 <tr style='height:15.0pt'>
+							  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+							  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+							  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+							  color:black'>êèð,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+							  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+							  </td>
+							  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>-30</span></p>
+							  </td>
+							  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>-20</span></p>
+							  </td>
+							  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>-10</span></p>
+							  </td>
+							  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>0</span></p>
+							  </td>
+							  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>10</span></p>
+							  </td>
+							 </tr>
+							 <tr style='height:15.0pt'>
+							  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+							  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+							  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+							  color:black'>÷è&#1179;,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+							  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+							  </td>
+							  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							 </tr>
+							 <tr style='height:15.0pt'>
+							  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+							  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>G</span></p>
+							  </td>
+							  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							 </tr>
+							</table>
+						</li>
+						<li>
+						<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=552
+							 style='width:413.9pt;margin-left:36.5pt;border-collapse:collapse;border:none'>
+							 <tr style='height:14.25pt'>
+							  <td width=552 colspan=6 valign=top style='width:413.9pt;border:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:14.25pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&#955;=1540</span></p>
+							  </td>
+							 </tr>
+							 <tr style='height:15.0pt'>
+							  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+							  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+							  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+							  color:black'>êèð,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+							  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+							  </td>
+							  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>-30</span></p>
+							  </td>
+							  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>-20</span></p>
+							  </td>
+							  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>-10</span></p>
+							  </td>
+							  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>0</span></p>
+							  </td>
+							  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>10</span></p>
+							  </td>
+							 </tr>
+							 <tr style='height:15.0pt'>
+							  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+							  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+							  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+							  color:black'>÷è&#1179;,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+							  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+							  </td>
+							  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							 </tr>
+							 <tr style='height:15.0pt'>
+							  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+							  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>G</span></p>
+							  </td>
+							  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+							  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+							  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+							  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+							  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+							  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+							  </td>
+							 </tr>
+							</table>
+						</li>
+						<li>
+							<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=552
+								 style='width:413.9pt;margin-left:36.5pt;border-collapse:collapse;border:none'>
+								 <tr style='height:14.25pt'>
+								  <td width=552 colspan=6 valign=top style='width:413.9pt;border:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:14.25pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&#955;=1550</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:15.0pt'>
+								  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+								  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+								  color:black'>êèð,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+								  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+								  </td>
+								  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>-30</span></p>
+								  </td>
+								  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>-20</span></p>
+								  </td>
+								  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>-10</span></p>
+								  </td>
+								  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>0</span></p>
+								  </td>
+								  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>10</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:15.0pt'>
+								  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+								  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+								  color:black'>÷è&#1179;,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+								  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+								  </td>
+								  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:15.0pt'>
+								  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>G</span></p>
+								  </td>
+								  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								 </tr>
+								</table>
+						</li>
+						<li>
+							<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=552
+								 style='width:413.9pt;margin-left:36.5pt;border-collapse:collapse;border:none'>
+								 <tr style='height:14.25pt'>
+								  <td width=552 colspan=6 valign=top style='width:413.9pt;border:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:14.25pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&#955;=1560</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:15.0pt'>
+								  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+								  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+								  color:black'>êèð,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+								  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+								  </td>
+								  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>-30</span></p>
+								  </td>
+								  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>-20</span></p>
+								  </td>
+								  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>-10</span></p>
+								  </td>
+								  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>0</span></p>
+								  </td>
+								  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>10</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:15.0pt'>
+								  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+								  lang=UZ-CYR style='font-size:10.0pt;font-family:"Times New Roman","serif";
+								  color:black'>÷è&#1179;,   </span><span lang=UZ-CYR style='font-size:14.0pt;
+								  font-family:"Times New Roman","serif"'>äÁ&#1179;</span></p>
+								  </td>
+								  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:15.0pt'>
+								  <td width=129 nowrap valign=bottom style='width:96.5pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>G</span></p>
+								  </td>
+								  <td width=77 nowrap valign=bottom style='width:58.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=88 nowrap valign=bottom style='width:66.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=97 nowrap valign=bottom style='width:72.6pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=85 nowrap valign=bottom style='width:63.8pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=76 nowrap valign=bottom style='width:57.0pt;border-top:none;
+								  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								 </tr>
+								</table>
+						</li>
+						<li>
+							<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=629
+								 style='width:472.0pt;margin-left:4.65pt;border-collapse:collapse'>
+								 <tr style='height:18.75pt'>
+								  <td width=195 nowrap style='width:146.0pt;border:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&#955;, íì</span></p>
+								  </td>
+								  <td width=109 nowrap style='width:81.55pt;border:solid windowtext 1.0pt;
+								  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>1530</span></p>
+								  </td>
+								  <td width=104 nowrap style='width:78.0pt;border:solid windowtext 1.0pt;
+								  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>1540</span></p>
+								  </td>
+								  <td width=107 nowrap style='width:80.45pt;border:solid windowtext 1.0pt;
+								  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>1550</span></p>
+								  </td>
+								  <td width=115 nowrap style='width:86.0pt;border:solid windowtext 1.0pt;
+								  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>1560</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:18.75pt'>
+								  <td width=195 nowrap style='width:146.0pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&#916;&#957;</span></p>
+								  </td>
+								  <td width=109 nowrap style='width:81.55pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=104 nowrap style='width:78.0pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=107 nowrap style='width:80.45pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=115 nowrap style='width:86.0pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								 </tr>
+								 <tr style='height:18.75pt'>
+								  <td width=195 nowrap style='width:146.0pt;border:solid windowtext 1.0pt;
+								  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>P</span><span
+								  lang=UZ-CYR style='font-size:8.0pt;font-family:"Times New Roman","serif";
+								  color:black'>øîâ êèð,</span><span lang=UZ-CYR style='font-size:14.0pt;
+								  font-family:"Times New Roman","serif";color:black'> äÁ&#1179;</span></p>
+								  </td>
+								  <td width=109 nowrap style='width:81.55pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=104 nowrap style='width:78.0pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=107 nowrap style='width:80.45pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								  <td width=115 nowrap style='width:86.0pt;border-top:none;border-left:none;
+								  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+								  padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+								  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+								  text-align:center;line-height:normal'><span lang=UZ-CYR style='font-size:
+								  14.0pt;font-family:"Times New Roman","serif";color:black'>&nbsp;</span></p>
+								  </td>
+								 </tr>
+								</table>
+						</li>
+				</div>
+				
+			</fieldset>
+		</div>
+	</div>
+	<div id='footer'><p> Mirazimova G.X.</p></div>
+</body>
+</html>

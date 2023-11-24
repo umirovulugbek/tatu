@@ -1,0 +1,142 @@
+body {
+	background: url("body_bg.jpg") repeat-x #eeffff;
+}
+
+#main_window {
+	border:1px solid #fff;
+	box-shadow:0px 0px 20px #000;
+	width:70%;
+	height:600px;
+	margin:0 auto;
+	margin-top:6px;
+	background:#eee;
+}
+
+#menu {
+	width:100%;
+	height:40px;
+}
+
+#menu ul.nav {
+	list-style:none;
+	display:block;
+	margin-left:8px;
+}
+#menu ul.nav li {
+	padding:6px 2px 6px 2px;
+	border:1px solid #eee;
+	float:left;
+	width:150px;
+	text-align:center;
+	background: url("menu_bg.png") #aaa;
+	bx-shadow:0px 0px 10px #fff;
+}
+
+#menu ul.nav li:hover {
+	background:green;
+	cursor:pointer;
+}
+#menu ul.nav li.current {
+	background:green;
+	cursor:pointer;
+}
+
+#menu ul.nav li a {
+	text-decoration:none;
+	color:#fff;
+}
+
+#menu ul.nav li.first-item {
+	border-top-left-radius:6px;
+	border-bottom-left-radius:6px;
+}
+#menu ul.nav li.last-item {
+	border-top-right-radius:6px;
+	border-bottom-right-radius:6px;
+}
+#content {
+	width:90%;
+	margin:0 auto;
+}
+
+#content fieldset {
+	border-radius:4px;
+	height:490px;
+}
+
+#first-page {
+	margin:0 auto;
+	text-align:center;
+	padding-top:50px;
+}
+
+#first-page p {
+	font-size:18px;
+	margin:0 auto;
+	width:70%;
+	padding-top:15px;
+}
+
+#first-page p.bottom {
+	margin-top:5em;
+}
+
+#second-page {
+	display:none;
+}
+
+td.configs p {
+	margin:8px;
+}
+
+td.configs p span {
+	font-size:18px;
+	font-weight:bold;
+}
+
+td.configs p input, select {
+	margin-left:1em;
+	margin-top:5px;
+}
+
+td.configs p.gresult {
+	box-shadow:0px 0px 2px #999;
+	width:99%;
+	height:55px;
+}
+p.gresult span.gresult_in {
+	padding:25%;
+	font-size:24px;
+	color:green;
+}
+
+td .graph {
+	border:1px solid #bbb;
+	box-shadow:0px 0px 1px #999;
+	width:100%;
+	height:450px;
+	background:url("b.jpg") #fff;
+}
+
+#footer {
+	text-align:center;
+}
+
+#footer p {
+	font-size:12px;
+	color:#000;
+	font-family:arial;
+	text-shadow:1px 1px 1px #fff;
+}
+
+#chastota {
+	box-shadow:0px 0px 3px #888;
+	width:79%;
+	height:40px;
+	padding:4px;
+	font-size:20px;
+	color:green;
+	padding-left:20%;
+}
+.xcord {position:absolute;left:780px;top:495px;font-weight:bold;color:blue;}
+.ycord {position:absolute;top:5em;left:280px;font-weight:bold;color:blue;}
